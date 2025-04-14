@@ -1,87 +1,64 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Store</title>
-    <link rel="stylesheet" href="style.css">
+    <title>ShopSync - Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h2>Product Catalog</h2>
-        <div class="product">
-            <img src="product1.jpg" alt="Product 1">
-            <div>
-                <h4>Product Name 1</h4>
-                <p>Price: $20</p>
+      <!-- Hero Section -->
+    <header class="hero">
+        <nav class="navbar">
+            <div class="logo">ShopSync
+
+                 <!-- Dark Mode Toggle Button -->
+               <div class="theme-switcher">
+                <input type="checkbox" id="dark-mode-toggle">
+                <label for="dark-mode-toggle" class="toggle-label">
+                    <i class="fa-solid fa-sun"></i>
+                    <i class="fa-solid fa-moon"></i>
+                    <span class="toggle"></span>
+                </label>
             </div>
-        </div>
-        <div class="product">
-            <img src="product2.jpg" alt="Product 2">
-            <div>
-                <h4>Product Name 2</h4>
-                <p>Price: $25</p>
+
             </div>
-        </div>
-        
-        <h2>Order Form</h2>
-        <form class="order-form">
-            <input type="text" placeholder="Your Name" required>
-            <input type="tel" placeholder="Phone Number" required>
-            <select required>
-                <option value="">Select Product</option>
-                <option value="Product 1">Product 1 - $20</option>
-                <option value="Product 2">Product 2 - $25</option>
-            </select>
-            <input type="number" placeholder="Quantity" min="1" required>
-            <button type="submit">Place Order</button>
-        </form>
 
-        <h2>Admin Login</h2>
-        <form class="login-form">
-            <input type="text" placeholder="Username" required>
-            <input type="password" placeholder="Password" required>
-            <button type="submit">Login</button>
-        </form>
+      <!-- Search Bar -->
+    <div class="search-container">
+        <input type="text" class="search-input" placeholder="Search products...">
+        <button class="search-btn">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
 
-        <h2>Supplier Management</h2>
-        <form class="supplier-form">
-            <input type="text" placeholder="Supplier Name" required>
-            <input type="tel" placeholder="Contact Number" required>
-            <input type="text" placeholder="Products Supplied" required>
-            <button type="submit">Add Supplier</button>
-        </form>
-
-        <h2>Billing System & Invoice Generation</h2>
-        <form class="billing-form">
-            <input type="text" placeholder="Customer Name" required>
-            <select required>
-                <option value="">Select Product</option>
-                <option value="Product 1">Product 1 - $20</option>
-                <option value="Product 2">Product 2 - $25</option>
-            </select>
-            <input type="number" placeholder="Quantity" min="1" required>
-            <button type="button" onclick="generateInvoice()">Generate Invoice</button>
-        </form>
-
-        <div class="invoice" id="invoice" style="display: none;">
-            <h3>Invoice</h3>
-            <p id="invoiceDetails"></p>
-            <button onclick="window.print()">Print Invoice</button>
-        </div>
     </div>
+  
+                <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="shop_products.html">Shop</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
 
-    <script>
-        function generateInvoice() {
-            let customerName = document.querySelector('.billing-form input[type="text"]').value;
-            let product = document.querySelector('.billing-form select').value;
-            let quantity = document.querySelector('.billing-form input[type="number"]').value;
-            let price = product.includes("Product 1") ? 20 : 25;
-            let total = price * quantity;
+              <!-- Cart Icon in Navbar -->
+<a href="cart.html" class="cart-icon">
+    <i class="fas fa-shopping-cart"></i>
+    <span class="cart-badge" id="cart-count">0</span>
+</a>
 
-            document.getElementById('invoiceDetails').innerHTML = `Customer: ${customerName} <br> Product: ${product} <br> Quantity: ${quantity} <br> Total: $${total}`;
-            document.getElementById('invoice').style.display = 'block';
-        }
-    </script>
+        </nav>
+
+        <div class="overlay">
+            <h1>Welcome to <span>ShopSync</span></h1>
+            <p>Seamless Shopping Experience for You</p>
+            <div class="cta-buttons">
+                <a href="shop_owner.html" class="btn">Shop Owner</a>
+                <a href="customer.html" class="btn btn-secondary">Customer</a>
+            </div>
+        </div>
+    </header>
+    <script src="script.js"></script>
+
 </body>
 </html>

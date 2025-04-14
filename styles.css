@@ -1,0 +1,247 @@
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    text-align: center;
+    color: #333;
+}
+
+header {
+    background: #222;
+    color: white;
+    padding: 20px;
+}
+/* Navbar Styling */
+.navbar {
+    position: absolute;
+    top:0;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 10px;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.logo {
+    font-size: 1.8rem;
+    color: white;
+    font-weight: bold;
+}
+/* Search Bar Container */
+.search-container {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 25px;
+    padding: 5px;
+    width: 250px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Input Field */
+.search-input {
+    border: none;
+    outline: none;
+    padding: 8px;
+    width: 85%;
+    font-size: 14px;
+    border-radius: 25px;
+}
+
+/* Search Button */
+.search-btn {
+    background: none;  /* Remove background */
+    border: none;  /* Remove border */
+    padding: 5px;  /* Adjust padding */
+    cursor: pointer;  /* Show pointer on hover */
+}
+.search-btn i {
+    font-size: 18px;
+    color: #333;
+}
+ .search-btn:hover i {
+    color: #007bff;  /* Bright Blue */
+}
+
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 55px;
+}
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+ /* Dark Mode Toggle - Switch Style */
+.theme-switcher {
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+}
+
+.toggle-label {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 50px;
+    height: 25px;
+    background: #ccc;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.toggle-label .fa-sun {
+    position: absolute;
+    left: 5px;
+    color: #f39c12;
+    font-size: 16px;
+}
+
+.toggle-label .fa-moon {
+    position: absolute;
+    right: 5px;
+    color: #fff;
+    font-size: 16px;
+}
+
+.toggle {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+/* Dark Mode Active */
+#dark-mode-toggle:checked + .toggle-label {
+    background: #333;
+}
+
+#dark-mode-toggle:checked + .toggle-label .toggle {
+    transform: translateX(25px);
+}
+
+/* Hide default checkbox */
+#dark-mode-toggle {
+    display: none;
+}
+.hero {
+    background: url('hero-bg.jpg') no-repeat center center/cover;
+    height: 100vh;
+    display: flex ;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 30px;
+    border-radius: 10px;
+    color: #fff;
+    width: 80%;
+    max-width: 500px;
+}
+
+nav {
+    margin-top: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    padding: 10px 20px;
+    background: #f39c12;
+    color: white;
+    border-radius: 5px;
+    margin: 5px;
+    display: inline-block;
+}
+
+.btn {
+    padding: 12px 25px;
+    text-decoration: none;
+    background: #f39c12;
+    color: white;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #e67e22;
+}
+/* Default Light Mode */
+body {
+    background-color: #ffffff;
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+/* Navbar Dark Mode */
+.dark-mode .navbar {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* Button Dark Mode */
+.dark-mode .btn {
+    background-color: #f39c12;
+    color: white;
+}
+
+.dark-mode .btn:hover {
+    background-color: #e67e22;
+}
+
+/* Feature Box Dark Mode */
+.dark-mode .feature-box {
+    background-color: #2c2c2c;
+    color: white;
+    box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.1);
+}
+
+/* Cart Icon Styling */
+.cart-icon {
+    position: relative;
+    color: white;
+    font-size: 22px;
+    margin-right: 20px;
+    text-decoration: none;
+}
+
+/* Cart Badge (Number of Items) */
+.cart-badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background: red;
+    color: white;
+    font-size: 12px;
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    line-height: 18px;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+
