@@ -10,6 +10,7 @@
     <header>
         <h2>Shop Owner Dashboard</h2>
     </header>
+
     <div id="navbar-container"></div>
 
     <nav>
@@ -17,7 +18,36 @@
         <a href="orders.html">Orders</a>
         <a href="report.html">Reports</a>
     </nav>
-    <script src="script.js" defer></script>
 
+    <!-- ⭐ Add Product Form Section -->
+    <section class="add-product-section">
+        <h3>Add New Product</h3>
+        <form class="add-product-form">
+            <!-- Product Name -->
+            <label for="product-name">Product Name:</label>
+            <input type="text" id="product-name" name="product-name" required>
+
+            <!-- Product Description -->
+            <label for="product-desc">Description:</label>
+            <textarea id="product-desc" name="product-desc" rows="3" required></textarea>
+
+            <!-- Product Price -->
+            <label for="product-price">Price (₹):</label>
+            <input type="number" id="product-price" name="product-price" required>
+
+            <!-- Product Category -->
+            <label for="product-category">Category:</label>
+            <input type="text" id="product-category" name="product-category">
+
+            <!-- Product Image -->
+            <label for="product-image">Upload Image:</label>
+            <input type="file" id="product-image" name="product-image" accept="image/*">
+
+            <!-- Submit Button -->
+            <button type="submit">Add Product</button>
+        </form>
+    </section>
+
+    <script src="script.js" defer></script>
 </body>
 </html>

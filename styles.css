@@ -243,5 +243,81 @@ body.dark-mode {
     border-radius: 50%;
     font-weight: bold;
 }
+/* -------------------------------------------
+   SHOP OWNER DASHBOARD - ADD PRODUCT FORM CSS
+---------------------------------------------- */
+
+/* Add Product Section Wrapper */
+.add-product-section {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 25px;
+    background-color: #f9f9f9; /* Light background */
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Section Title */
+.add-product-section h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+/* Form Element Layout */
+.add-product-form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Labels */
+.add-product-form label {
+    margin: 10px 0 5px;
+    font-weight: 600;
+    color: #555;
+}
+
+/* Input Fields, Textarea, File */
+.add-product-form input[type="text"],
+.add-product-form input[type="number"],
+.add-product-form input[type="file"],
+.add-product-form textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+/* Textarea Size */
+.add-product-form textarea {
+    resize: vertical;
+}
+
+/* Submit Button */
+.add-product-form button[type="submit"] {
+    margin-top: 20px;
+    padding: 12px;
+    background-color: #4CAF50; /* Green */
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Button Hover Effect */
+.add-product-form button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Responsive Adjustments (optional) */
+@media (max-width: 768px) {
+    .add-product-section {
+        margin: 20px;
+        padding: 20px;
+    }
+}
 
 
