@@ -394,6 +394,53 @@ body.dark-mode {
   .product-card button:hover {
     background-color: #c82333;
   }
+  /* Compact Footer Styles */
+.footer {
+    background-color: #f9f9f9;
+    padding: 15px 20px;
+    color: #333;
+    border-top: 1px solid #ddd;
+    font-size: 14px;
+    margin-top: 30px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-left h3 {
+    margin: 0 0 5px;
+    font-size: 18px;
+}
+
+.footer-left p,
+.footer-right p {
+    margin: 3px 0;
+}
+
+.footer-right a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.footer-right a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
   
 
 
