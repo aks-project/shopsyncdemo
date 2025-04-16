@@ -62,4 +62,47 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .catch(error => console.error("Error loading navbar:", error));
 });
+// ========== Shop Owner Product Form Functionality ==========
 
+// Wait until DOM is fully loaded
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("product-form");
+  
+    if (form) {
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+  
+        // Get form values
+        const name = document.getElementById("product-name").value;
+        const price = document.getElementById("product-price").value;
+        const description = document.getElementById("product-description").value;
+        const image = document.getElementById("product-image").value;
+        const stock = document.getElementById("product-stock").value;
+  
+        // Create product object
+        const product = {
+          name,
+          price,
+          description,
+          image,
+          stock,
+        };
+  
+        // Get current products from localStorage or create empty array
+        const products = JSON.parse(localStorage.getItem("products")) || [];
+  
+        // Add new product to the array
+        products.push(product);
+  
+        // Save updated product array to localStorage
+        localStorage.setItem("products", JSON.stringify(products));
+  
+        // Optional: show success message
+        alert("Product added successfully!");
+  
+        // Clear the form
+        form.reset();
+      });
+    }
+  });
+  

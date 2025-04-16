@@ -3,19 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inventory Management</title>
+    <title>Inventory - Shop Owner</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div id="navbar-container"></div>
+
     <header>
         <h2>Inventory Management</h2>
     </header>
-    <div id="navbar-container"></div>
 
-    <nav>
-        <a href="shop_owner.html">Back to Dashboard</a>
-    </nav>
-    <script src="script.js" defer></script>
+    <!-- Product Display Section -->
+    <section class="inventory-section">
+        <h3>Current Products</h3>
+        <div id="product-list" class="product-list">
+            <!-- Products will be dynamically inserted here -->
+        </div>
+    </section>
 
+    <script>
+        // Load products from localStorage and display in inventory page
+        document.addEventListener("DOMContentLoaded", function () {
+            const productList = document.getElementById("product-list");
+            const storedProducts = JSON.parse(localStorage.getItem("products")) || [];
+
+            if (storedProducts.length === 0) {
+                productList.innerHTML = "<p>No products added yet.</p>";
+                return;
+            }
+
+            storedProducts.forEach((product, index) => {
+                const productCard = document.createElement("div");
+                productCard.classList.add("product-card");
+
+                productCard.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}" />
+                    <h4>${product.name}</h4>
+                    <p>Price: ₹${product.price}</p>
+                    <p>${product.description}</p>
+                    <button onclick="deleteProduct(${index})">Delete</button>
+                `;
+
+                productList.appendChild(productCard);
+            });
+        });
+
+        function deleteProduct(index) {
+            const storedProducts = JSON.parse(localStorage.getItem("products")) || [];
+            storedProducts.splice(index, 1);
+            localStorage.setItem("products", JSON.stringify(storedProducts));
+            location.reload(); // Refresh the page to show updated list
+        }
+    </script>
+    <script src="script.js"></script>
 </body>
 </html>

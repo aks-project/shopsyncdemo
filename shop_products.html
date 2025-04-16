@@ -1,17 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop Products</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shop - Products</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <header>
-        <h2>Available Products</h2>
-    </header>
-    <div id="navbar-container"></div>
-    <script src="script.js" defer></script>
+  <div id="nsavbar-container"></div>
 
+  <header>
+    <h2>Available Products</h2>
+  </header>
+
+  <section class="shop-products">
+    <div id="product-container" class="product-list">
+      <!-- Products will be loaded here -->
+    </div>
+  </section>
+  <script>
+    // Load products from localStorage
+    document.addEventListener("DOMContentLoaded", () => {
+      const container = document.getElementById("product-container");
+      const products = JSON.parse(localStorage.getItem("products")) || [];
+  
+      if (products.length === 0) {
+        container.innerHTML = "<p>No products available.</p>";
+        return;
+      }
+  
+      products.forEach((product, index) => {
+        const div = document.createElement("div");
+        div.className = "product-card";
+        div.innerHTML = `
+          <img src="${product.image}" alt="${product.name}" />
+          <h4>${product.name}</h4>
+          <p>${product.description}</p>
+          <p>Price: ₹${product.price}</p>
+          <button class="buy-btn" data-index="${index}">Add to Cart</button>
+        `;
+        container.appendChild(div);
+      });
+  
+      // Add click event to "Add to Cart" buttons
+      container.addEventListener("click", (e) => {
+        if (e.target.classList.contains("buy-btn")) {
+          const index = e.target.getAttribute("data-index");
+          const selectedProduct = products[index];
+  
+          let cart = JSON.parse(localStorage.getItem("cart")) || [];
+          cart.push(selectedProduct);
+          localStorage.setItem("cart", JSON.stringify(cart));
+  
+          alert("Added to cart!");
+  
+          // Optional: Update cart badge
+          updateCartBadge();
+        }
+      });
+  
+      // Function to update cart badge (if exists in navbar)
+      function updateCartBadge() {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const badge = document.getElementById("cart-count");
+        if (badge) badge.textContent = cart.length;
+      }
+  
+      updateCartBadge(); // initialize badge on load
+    });
+  </script>
+  
+   
+  <script src="script.js"></script>
 </body>
 </html>
