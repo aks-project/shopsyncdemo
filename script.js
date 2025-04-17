@@ -1,35 +1,86 @@
-document.addEventListener("DOMContentLoaded", function () {
+ // ===================== ShopSync Script =====================
+
+// DOM Ready Handler
+document.addEventListener("DOMContentLoaded", () => {
     console.log("ShopSync Loaded!");
-});
-// Dark Mode Toggle Function
-const toggleSwitch = document.getElementById("dark-mode-toggle");
 
-toggleSwitch.addEventListener("change", () => {
-    document.body.classList.toggle("dark-mode");
+    // ================= Typing Animation =================
+    const typingText = document.getElementById("typing-text");
+    if (typingText) {
+        let text = typingText.textContent;
+        typingText.textContent = "";
+        let index = 0;
 
-    // Store user preference in localStorage
-    if (document.body.classList.contains("dark-mode")) {
-        localStorage.setItem("theme", "dark");
-    } else {
-        localStorage.setItem("theme", "light");
+        const typeChar = () => {
+            if (index < text.length) {
+                typingText.textContent += text.charAt(index);
+                index++;
+                setTimeout(typeChar, 70); // Typing speed
+            }
+        };
+
+        typeChar();
     }
-});
 
-// Apply saved theme on page load
-window.addEventListener("DOMContentLoaded", () => {
+    // ================= Dark Mode Setup =================
+    const toggleSwitch = document.getElementById("dark-mode-toggle");
     if (localStorage.getItem("theme") === "dark") {
         document.body.classList.add("dark-mode");
         toggleSwitch.checked = true;
     }
-});
 
-//cart icon logic start from here
-document.addEventListener("DOMContentLoaded", function () {
+    // ================= Dark Mode Toggle =================
+    toggleSwitch.addEventListener("change", () => {
+        document.body.classList.toggle("dark-mode");
+        if (document.body.classList.contains("dark-mode")) {
+            localStorage.setItem("theme", "dark");
+        } else {
+            localStorage.setItem("theme", "light");
+        }
+    });
+
+    // ================= Load Cart Count =================
     let cartCount = localStorage.getItem("cartCount") || 0;
-    document.getElementById("cart-count").textContent = cartCount;
+    const cartCountElem = document.getElementById("cart-count");
+    if (cartCountElem) {
+        cartCountElem.textContent = cartCount;
+    }
+
+    // ================= Load Navbar Dynamically =================
+    fetch("navbar.html")
+        .then(response => response.text())
+        .then(data => {
+            const navbarContainer = document.getElementById("navbar-container");
+            if (navbarContainer) {
+                navbarContainer.innerHTML = data;
+            }
+        })
+        .catch(error => console.error("Error loading navbar:", error));
+
+    // ================= Shop Owner Product Form Logic =================
+    const form = document.getElementById("product-form");
+    if (form) {
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const name = document.getElementById("product-name").value;
+            const price = document.getElementById("product-price").value;
+            const description = document.getElementById("product-description").value;
+            const image = document.getElementById("product-image").value;
+            const stock = document.getElementById("product-stock").value;
+
+            const product = { name, price, description, image, stock };
+            const products = JSON.parse(localStorage.getItem("products")) || [];
+            products.push(product);
+            localStorage.setItem("products", JSON.stringify(products));
+            alert("Product added successfully!");
+            form.reset();
+        });
+    }
 });
 
-// Function to add an item to the cart
+// ================= Cart Logic (Outside DOMContentLoaded) =================
+
 function addToCart() {
     let cartCount = parseInt(localStorage.getItem("cartCount")) || 0;
     cartCount++;
@@ -37,7 +88,6 @@ function addToCart() {
     document.getElementById("cart-count").textContent = cartCount;
 }
 
-// Function to remove an item from the cart
 function removeFromCart() {
     let cartCount = parseInt(localStorage.getItem("cartCount")) || 0;
     if (cartCount > 0) {
@@ -47,62 +97,7 @@ function removeFromCart() {
     document.getElementById("cart-count").textContent = cartCount;
 }
 
-// Function to clear the cart
 function clearCart() {
     localStorage.setItem("cartCount", 0);
     document.getElementById("cart-count").textContent = 0;
 }
- 
- // Load the navbar dynamically
-document.addEventListener("DOMContentLoaded", function () {
-    fetch("navbar.html")
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById("navbar-container").innerHTML = data;
-        })
-        .catch(error => console.error("Error loading navbar:", error));
-});
-// ========== Shop Owner Product Form Functionality ==========
-
-// Wait until DOM is fully loaded
-document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("product-form");
-  
-    if (form) {
-      form.addEventListener("submit", function (event) {
-        event.preventDefault();
-  
-        // Get form values
-        const name = document.getElementById("product-name").value;
-        const price = document.getElementById("product-price").value;
-        const description = document.getElementById("product-description").value;
-        const image = document.getElementById("product-image").value;
-        const stock = document.getElementById("product-stock").value;
-  
-        // Create product object
-        const product = {
-          name,
-          price,
-          description,
-          image,
-          stock,
-        };
-  
-        // Get current products from localStorage or create empty array
-        const products = JSON.parse(localStorage.getItem("products")) || [];
-  
-        // Add new product to the array
-        products.push(product);
-  
-        // Save updated product array to localStorage
-        localStorage.setItem("products", JSON.stringify(products));
-  
-        // Optional: show success message
-        alert("Product added successfully!");
-  
-        // Clear the form
-        form.reset();
-      });
-    }
-  });
-  
