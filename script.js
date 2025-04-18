@@ -101,3 +101,80 @@ function clearCart() {
     localStorage.setItem("cartCount", 0);
     document.getElementById("cart-count").textContent = 0;
 }
+
+window.addEventListener("DOMContentLoaded", () => {
+  const adminBtn = document.getElementById("admin-login");
+  const userBtn = document.getElementById("user-login");
+
+  if (adminBtn && userBtn) {
+    adminBtn.addEventListener("click", function(e) {
+      e.preventDefault();
+      showGoogleSignIn("Admin");
+    });
+
+    userBtn.addEventListener("click", function(e) {
+      e.preventDefault();
+      showGoogleSignIn("User");
+    });
+  }
+
+  function showGoogleSignIn(role) {
+    google.accounts.id.initialize({
+      client_id: "YOUR_GOOGLE_CLIENT_ID", // Replace this later
+      callback: (response) => handleCredentialResponse(response, role)
+    });
+
+    google.accounts.id.prompt(); // show Google login popup
+  }
+
+  function handleCredentialResponse(response, role) {
+    console.log("Google Login Success for:", role);
+    console.log("Credential Response:", response);
+
+    // Redirect based on role
+    if (role === "Admin") {
+      window.location.href = "shop_owner.html";
+    } else {
+      window.location.href = "shop_products.html";
+    }
+  }
+});
+// login with google code js
+window.addEventListener("DOMContentLoaded", () => {
+    const adminBtn = document.getElementById("admin-login");
+    const userBtn = document.getElementById("user-login");
+  
+    if (adminBtn && userBtn) {
+      adminBtn.addEventListener("click", function(e) {
+        e.preventDefault();
+        showGoogleSignIn("Admin");
+      });
+  
+      userBtn.addEventListener("click", function(e) {
+        e.preventDefault();
+        showGoogleSignIn("User");
+      });
+    }
+  
+    function showGoogleSignIn(role) {
+      google.accounts.id.initialize({
+        client_id: "YOUR_GOOGLE_CLIENT_ID", // Replace this later
+        callback: (response) => handleCredentialResponse(response, role)
+      });
+  
+      google.accounts.id.prompt(); // show Google login popup
+    }
+  
+    function handleCredentialResponse(response, role) {
+      console.log("Google Login Success for:", role);
+      console.log("Credential Response:", response);
+  
+      // Redirect based on role
+      if (role === "Admin") {
+        window.location.href = "shop_owner.html";
+      } else {
+        window.location.href = "shop_products.html";
+      }
+    }
+  });
+  

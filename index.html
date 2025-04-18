@@ -6,6 +6,12 @@
     <title>ShopSync - Home</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <!-- Google Sign-In SDK -->
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+
+<!-- JWT Decode Library -->
+<script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
+
 </head>
 <body>
       <!-- Hero Section -->
@@ -53,10 +59,13 @@
             <h1 id="typing-text">Welcome to ShopSync</h1>
             <p>Seamless Shopping Experience for You</p>
             <div class="cta-buttons">
-                <a href="shop_owner.html" class="btn">Shop Owner</a>
-                <a href="shop_products.html" class="btn btn-secondary">Customer</a>
-
+                <a href="#" class="btn" id="admin-login">Admin Login</a>
+                <a href="#" class="btn btn-secondary" id="user-login">User Login</a>
+                
+                <!-- Google Sign-In Placeholder -->
+                <div id="google-login" style="margin-top: 20px;"></div>
             </div>
+            
         </div>
     </header>
     <!-- Footer Section -->
@@ -73,8 +82,9 @@
         </div>
     </div>
 </footer>
-
-    <script src="script.js"></script>
+<!-- Google Identity Services -->
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="script.js"></script><!-- our main JS file -->
 
 </body>
 </html>
