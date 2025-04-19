@@ -141,40 +141,53 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 // login with google code js
 window.addEventListener("DOMContentLoaded", () => {
-    const adminBtn = document.getElementById("admin-login");
-    const userBtn = document.getElementById("user-login");
-  
-    if (adminBtn && userBtn) {
-      adminBtn.addEventListener("click", function(e) {
-        e.preventDefault();
-        showGoogleSignIn("Admin");
-      });
-  
-      userBtn.addEventListener("click", function(e) {
-        e.preventDefault();
-        showGoogleSignIn("User");
-      });
-    }
-  
-    function showGoogleSignIn(role) {
-      google.accounts.id.initialize({
-        client_id: "YOUR_GOOGLE_CLIENT_ID", // Replace this later
-        callback: (response) => handleCredentialResponse(response, role)
-      });
-  
-      google.accounts.id.prompt(); // show Google login popup
-    }
-  
-    function handleCredentialResponse(response, role) {
-      console.log("Google Login Success for:", role);
-      console.log("Credential Response:", response);
-  
-      // Redirect based on role
-      if (role === "Admin") {
-        window.location.href = "shop_owner.html";
-      } else {
-        window.location.href = "shop_products.html";
+  const adminBtn = document.getElementById("admin-login");
+  const userBtn = document.getElementById("user-login");
+  const googleLoginDiv = document.getElementById("google-login");
+
+  let userRole = ""; // track role
+
+  if (adminBtn && userBtn) {
+    adminBtn.addEventListener("click", function(e) {
+      e.preventDefault();
+      userRole = "Admin";
+      showGoogleSignInButton();
+    });
+
+    userBtn.addEventListener("click", function(e) {
+      e.preventDefault();
+      userRole = "User";
+      showGoogleSignInButton();
+    });
+  }
+
+  function showGoogleSignInButton() {
+    googleLoginDiv.style.display = "block"; // show the container
+
+    google.accounts.id.initialize({
+      client_id: "YOUR_GOOGLE_CLIENT_ID",
+      callback: (response) => handleCredentialResponse(response, userRole)
+    });
+
+    google.accounts.id.renderButton(
+      googleLoginDiv,
+      {
+        theme: "outline",
+        size: "large",
+        shape: "pill"
       }
+    );
+  }
+
+  function handleCredentialResponse(response, role) {
+    console.log("Logged in as:", role);
+    console.log("Credential:", response);
+
+    // Redirect
+    if (role === "Admin") {
+      window.location.href = "shop_owner.html";
+    } else {
+      window.location.href = "shop_products.html";
     }
-  });
-  
+  }
+});
