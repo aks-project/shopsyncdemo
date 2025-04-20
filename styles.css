@@ -268,79 +268,178 @@ body.dark-mode {
 /* -------------------------------------------
    SHOP OWNER DASHBOARD - ADD PRODUCT FORM CSS
 ---------------------------------------------- */
-
-/* Add Product Section Wrapper */
-.add-product-section {
-    max-width: 600px;
-    margin: 30px auto;
-    padding: 25px;
-    background-color: #f9f9f9; /* Light background */
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Section Title */
-.add-product-section h3 {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 24px;
+/* General Reset & Base Styling */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f2f4f8;
     color: #333;
 }
 
-/* Form Element Layout */
+/* Header */
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Navbar */
+.main-nav {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    background-color: #fff;
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 16px;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.main-nav a:hover {
+    color: #4CAF50;
+}
+
+/* Add Product Section */
+.add-product-section {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Section Heading */
+.add-product-section h3 {
+    text-align: center;
+    font-size: 26px;
+    color: #4CAF50;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Form Layout */
 .add-product-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.form-group {
+    flex: 1 1 45%;
     display: flex;
     flex-direction: column;
 }
 
-/* Labels */
+.form-group.full-width {
+    flex: 1 1 100%;
+}
+
 .add-product-form label {
-    margin: 10px 0 5px;
     font-weight: 600;
+    margin-bottom: 6px;
     color: #555;
 }
 
-/* Input Fields, Textarea, File */
 .add-product-form input[type="text"],
 .add-product-form input[type="number"],
 .add-product-form input[type="file"],
 .add-product-form textarea {
-    padding: 10px;
+    padding: 12px;
     border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 16px;
+    border-radius: 8px;
+    font-size: 15px;
+    background-color: #fafafa;
+    transition: border-color 0.3s ease;
 }
 
-/* Textarea Size */
+.add-product-form input:focus,
+.add-product-form textarea:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
 .add-product-form textarea {
     resize: vertical;
+    min-height: 80px;
 }
 
 /* Submit Button */
 .add-product-form button[type="submit"] {
-    margin-top: 20px;
-    padding: 12px;
-    background-color: #4CAF50; /* Green */
-    color: #fff;
-    border: none;
-    border-radius: 6px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px;
     font-size: 16px;
+    border: none;
+    border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-/* Button Hover Effect */
 .add-product-form button[type="submit"]:hover {
     background-color: #45a049;
 }
 
-/* Responsive Adjustments (optional) */
+/* Footer */
+.footer {
+    background-color: #f1f1f1;
+    padding: 30px 20px;
+    margin-top: 60px;
+    border-top: 1px solid #ddd;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-left h3 {
+    color: #4CAF50;
+    margin-bottom: 5px;
+}
+
+.footer a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-    .add-product-section {
-        margin: 20px;
-        padding: 20px;
+    .form-group {
+        flex: 1 1 100%;
+    }
+
+    .main-nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 20px;
     }
 }
+
+ 
 
 /* cart section start here */
 /* Cart Section Layout */
@@ -497,49 +596,49 @@ body.dark-mode {
   }
   /* FAQ SECTION START HERE */
   .faq-section {
-    background-color: #f9f9f9;
-    padding: 40px 20px;
-    margin-top: 30px;
-    text-align: center;
-  }
-  
-  .faq-section h2 {
-    font-size: 28px;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  .faq-container {
-    max-width: 800px;
-    margin: auto;
-    text-align: left;
-  }
-  
-  .faq-item {
-    margin-bottom: 15px;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .faq-question {
-    background: none;
-    border: none;
-    outline: none;
-    width: 100%;
-    text-align: left;
-    font-size: 18px;
-    padding: 10px;
-    font-weight: bold;
-    cursor: pointer;
-    color: #444;
-  }
-  
-  .faq-answer {
-    display: none;
-    padding: 0 10px 10px;
-    font-size: 16px;
-    color: #555;
-  }
-  
+  background-color: #f9f9f9;
+  padding: 40px 20px;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.faq-section h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.faq-container {
+  max-width: 800px;
+  margin: auto;
+  text-align: left;
+}
+
+.faq-item {
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.faq-question {
+  background: none;
+  border: none;
+  outline: none;
+  width: 100%;
+  text-align: left;
+  font-size: 18px;
+  padding: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #444;
+}
+
+.faq-answer {
+  display: none;
+  padding: 0 10px 10px;
+  font-size: 16px;
+  color: #555;
+}
+
   
   
  

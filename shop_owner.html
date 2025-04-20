@@ -1,68 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Shop Owner - Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Font Awesome for Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
 </head>
 <body>
+
+    <!-- Header -->
     <header>
         <h2>Shop Owner Dashboard</h2>
     </header>
 
-    <div id="navbar-container"></div>
-
-    <nav>
-        <a href="inventory.html">Inventory</a>
-        <a href="orders.html">Orders</a>
-        <a href="report.html">Reports</a>
+    <!-- Navigation Bar -->
+    <nav class="main-nav">
+        <a href="inventory.html"><i class="fas fa-boxes"></i> Inventory</a>
+        <a href="orders.html"><i class="fas fa-shopping-bag"></i> Orders</a>
+        <a href="report.html"><i class="fas fa-chart-bar"></i> Reports</a>
     </nav>
 
-    <!-- ⭐ Add Product Form Section -->
+    <!-- Add Product Form Section -->
     <section class="add-product-section">
-        <h3>Add New Product</h3>
+        <h3><i class="fas fa-plus-circle"></i> Add New Product</h3>
         <form class="add-product-form">
-            <!-- Product Name -->
-            <label for="product-name">Product Name:</label>
-            <input type="text" id="product-name" name="product-name" required>
+            
+            <div class="form-group">
+                <label for="product-name"><i class="fas fa-box"></i> Product Name</label>
+                <input type="text" id="product-name" name="product-name" placeholder="e.g., T-Shirt" required>
+            </div>
 
-            <!-- Product Description -->
-            <label for="product-desc">Description:</label>
-            <textarea id="product-desc" name="product-desc" rows="3" required></textarea>
+            <div class="form-group">
+                <label for="product-desc"><i class="fas fa-align-left"></i> Description</label>
+                <textarea id="product-desc" name="product-desc" rows="3" placeholder="Short product details..." required></textarea>
+            </div>
 
-            <!-- Product Price -->
-            <label for="product-price">Price (₹):</label>
-            <input type="number" id="product-price" name="product-price" required>
+            <div class="form-group">
+                <label for="product-price"><i class="fas fa-rupee-sign"></i> Price (₹)</label>
+                <input type="number" id="product-price" name="product-price" placeholder="e.g., 499" required>
+            </div>
 
-            <!-- Product Category -->
-            <label for="product-category">Category:</label>
-            <input type="text" id="product-category" name="product-category">
+            <div class="form-group">
+                <label for="product-category"><i class="fas fa-tags"></i> Category</label>
+                <input type="text" id="product-category" name="product-category" placeholder="e.g., Clothing">
+            </div>
 
-            <!-- Product Image -->
-            <label for="product-image">Upload Image:</label>
-            <input type="file" id="product-image" name="product-image" accept="image/*">
+            <div class="form-group">
+                <label for="product-image"><i class="fas fa-image"></i> Upload Image</label>
+                <input type="file" id="product-image" name="product-image" accept="image/*">
+            </div>
 
-            <!-- Submit Button -->
-            <button type="submit">Add Product</button>
+            <div class="form-group full-width">
+                <button type="submit"><i class="fas fa-upload"></i> Add Product</button>
+            </div>
         </form>
     </section>
+
     <!-- Footer Section -->
-<footer class="footer">
-    <div class="footer-content">
-        <div class="footer-left">
-            <h3>ShopSync</h3>
-            <p>Seamless Inventory & Shopping Experience</p>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <h3>ShopSync</h3>
+                <p>Seamless Inventory & Shopping Experience</p>
+            </div>
+            <div class="footer-right">
+                <p>Contact: <a href="mailto:support@shopsync.com">support@shopsync.com</a></p>
+                <p>&copy; 2025 ShopSync. All rights reserved.</p>
+            </div>
         </div>
+    </footer>
 
-        <div class="footer-right">
-            <p>Contact: <a href="mailto:support@shopsync.com">support@shopsync.com</a></p>
-            <p>&copy; 2025 ShopSync. All rights reserved.</p>
-        </div>
-    </div>
-</footer>
-
-
+    <!-- JS -->
     <script src="script.js" defer></script>
 </body>
 </html>
